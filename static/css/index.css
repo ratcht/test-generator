@@ -1,0 +1,106 @@
+#mainSection{
+  margin-top:5%; 
+  text-align: center; 
+}
+
+.sectionButton{
+  border: none;
+  color: white;
+  padding: 2vw 3vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 2vw;
+}
+
+.sectionButton:hover{
+  opacity: 75%;
+}
+
+.outer-button-wrapper{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.passage-item{
+  background-color: #fafcff;
+  padding:1%;
+  padding-left:4%;
+}
+
+.generate-button-side{
+  width:80%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  font-family: 'Arial';
+  font-size: 0.9vw;
+  background-color: white;
+  color: black;
+  border: 2px solid black; /* Green */
+  white-space: normal;
+   word-wrap: break-word;
+}
+
+.addButton{
+  border: none;
+  color: white;
+  background-color: greenyellow;
+  padding: 1vw 2vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1vw;
+}
+
+.addButton:hover{
+  opacity: 75%;
+}
+
+#main-section{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list{
+  margin-top:3%;
+  margin-bottom: 1%;
+  background-color: white;
+  text-align: center;
+  font-family: 'Arial';
+  width:60%;
+}
+
+#project-list .list{
+  margin-top:0 !important;
+}
+
+
+#table-header{
+  padding:1%;
+
+  font-weight: bold;
+}
+
+.website-item{
+  background-color: #fafcff;
+  padding:1%;
+}
+
+.website-item-inner{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.website-item-child{
+  width:33.33%;
+  text-align: center;
+}
+
+.project-item-child{
+  width:30%;
+  text-align: center;
+}

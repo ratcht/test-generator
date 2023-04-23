@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <p>{{passage_g.passage}}</p><br>
+  </div>
+  <div class="row">
+    <div class="container">
+      {% for question_group in passage_g.question_groups %}
+        <div class="row">
+          <p>Question: <strong>{{question_group.question}}</strong></p>
+          {% for response in question_group.responses %}
+            <p>{{response}}</p>
+          {% endfor %}
+          <p>Answer: <strong>{{question_group.answer}}</strong></p><br><br>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

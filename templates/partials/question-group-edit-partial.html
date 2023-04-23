@@ -1,0 +1,5 @@
+<label for="question">Question Statement:</label><br>
+<input type="text" form="create-model" name="question{{i}}" id="question" style="width:50%; height:50%;" value="{{model.sample_question_groups[question_index].question}}"><br><br>
+
+<label for="responses">Responses To Question</label><br>
+<textarea id="responses" name="responses{{i}}" form="create-model" style="width:50%; margin-bottom: 1%;" placeholder="Enter responses here (one per line, include the letter followed by space: e.g A. ChatGPT)"></textarea><br><br>

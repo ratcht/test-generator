@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js">  </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 style="margin-top:4%;">Test Generator</h1>
+      <div class="row" style="margin-top:0.5%;">
+        <h4 style="font-weight: normal; color:green">{{section.section_type.value}}</h4>
+      </div>
+      <div class="row" style="margin-top:1.5%;">
+        <h4 style="font-weight: normal;">Past Workbooks:</h4>
+      </div>
+      <div class="row" id="mainSection">
+        {% if section.workbooks|length == 0%}
+          <p id="empty-message">You currently have no workbooks generated</p>
+        {% else %}
+        {% for workbook in section.workbooks %}
+          {% with name=workbook.name %}
+            <div class="passage-item"><a href="#" style="text-decoration: none;">{% include "partials/passage-item.html" %}</a></div>
+            {% endwith %}
+            {% if loop.index != section.workbooks|length %}
+            <hr class="solid">
+          {% endif %}
+        {% endfor %}
+        {%endif%}
+      </div>
+      <div class="row">
+        <form action="/create/workbook"class="button-wrapper" style="margin-top: 3%; text-align: center;">
+          <input type="hidden" name="section_type" value="{{section.section_type.value}}">
+          <input type="submit" class="addButton"value="Add new workbook" />
+        </form>
+      </div>
+    </div>
+
+  </body>
+
+</html>

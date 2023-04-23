@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+
+<head>
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js">  </script>
+</head>
+
+<html>
+  <body>
+    <div id="body-box">
+
+      
+      <div id="main-section">
+        <div id="#project-list" class="list" style="border-style: solid; border-color: greenyellow;">
+          {% if models|length == 0%}
+          <p id="empty-message">You currently have no models configured</p>
+          {% else %}
+            <div id="table-header">
+              <div class="website-item-inner">
+                <div class="website-item-child">
+                  <p>Model Title</p>
+                </div>
+                <div class="website-item-child">
+                  <p>Section Type</p>
+                </div>
+                <div class="website-item-child">
+                  <p>Delete</p>
+                </div>
+              </div>
+            </div>
+            {% for model in models %}
+              {% with model=model, model_index=loop.index %}
+              <div class="website-item"><a href="/model/edit?model_index={{model_index-1}}" style="text-decoration: none; color:black">{% include "partials/model-item.html" %}</a></div>
+              {% endwith %}
+              {% if loop.index != models|length %}
+              <hr class="solid">
+              {% endif %}
+            {% endfor %}
+          {%endif%}
+        </div>
+      </div>
+      <div class="outer-button-wrapper">
+        <div class="button-wrapper">
+          <button onclick= "window.location.href='/model/create';" class="addButton" style="background-color: yellowgreen;">Create New Model!</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -54,7 +54,12 @@
     <div class="container">
       <h1 style="margin-top:4%;">Test Generator</h1>
       <div class="row" style="margin-top:1.5%;">
-        <h4 style="font-weight: normal;">View Passage + Questions:</h4>
+        <div class="col-sm">
+          <h4 style="font-weight: normal;">View Passage + Questions:</h4>
+        </div>
+        <div class="col-sm">
+          <a href="/section?section_type={{section.section_type.value}}">Go Back</a>
+        </div>
       </div>
 
       <div class="row">
@@ -75,7 +80,8 @@
       </div>
       <form id="upload-workbook" action="/upload/workbook" method="POST"></form>
       <div class="row">
-        <input type="hidden" form="upload-workbook" name="workbook" value="{{workbook}}">
+        <input type="hidden" form="upload-workbook" name="workbook_index" value="{{workbook_index}}">
+        <input type="hidden" form="upload-workbook" name="section_type" value="{{section.section_type.value}}">
         <input type="submit" form="upload-workbook" class="addButton" value="Upload workbook!" />
       </div>
     </div>

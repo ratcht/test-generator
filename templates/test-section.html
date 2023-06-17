@@ -13,7 +13,12 @@
     <div class="container">
       <h1 style="margin-top:4%;">Test Generator</h1>
       <div class="row" style="margin-top:0.5%;">
-        <h4 style="font-weight: normal; color:green">{{section.section_type.value}}</h4>
+        <div class="col-sm">
+          <h4 style="font-weight: normal; color:green">{{section.section_type.value}}</h4>
+        </div>
+        <div class="col-sm">
+          <a href="/">Go Back</a>
+        </div>
       </div>
       <div class="row" style="margin-top:1.5%;">
         <h4 style="font-weight: normal;">Past Workbooks:</h4>
@@ -23,12 +28,12 @@
           <p id="empty-message">You currently have no workbooks generated</p>
         {% else %}
         {% for workbook in section.workbooks %}
-          {% with name=workbook.name %}
-            <div class="passage-item"><a href="#" style="text-decoration: none;">{% include "partials/passage-item.html" %}</a></div>
-            {% endwith %}
+        {% with workbook_index = loop.index-1, section_type = section.section_type.value %}
+            <div class="passage-item"><a href="/view/workbook?section_type={{section.section_type.value}}&workbook_index={{loop.index-1}}" style="text-decoration: none;">{% include "partials/workbook-item.html" %}</a></div>
             {% if loop.index != section.workbooks|length %}
             <hr class="solid">
           {% endif %}
+        {% endwith %}
         {% endfor %}
         {%endif%}
       </div>
@@ -36,6 +41,13 @@
         <form action="/create/workbook"class="button-wrapper" style="margin-top: 3%; text-align: center;">
           <input type="hidden" name="section_type" value="{{section.section_type.value}}">
           <input type="submit" class="addButton"value="Add new workbook" />
+        </form>
+      </div>
+
+      <div class="row" style="text-align: center; margin-top: 5%; font-size: 3vw;">
+        <form action="/model/view" class="button-wrapper" method="POST">
+          <input type="hidden" name="section-type" value="{{section.section_type.value}}"/>
+          <input type="submit" class="addButton" style="background-color: blueviolet;" value="Create Model!" />
         </form>
       </div>
     </div>

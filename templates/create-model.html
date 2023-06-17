@@ -16,22 +16,17 @@
         <h4 style="font-weight: normal;">Add a model:</h4>
       </div>
       <div class="row" style="margin-top: 2%;">
-        <form id="create-model" action="/model/create" method="POST">
+        <form id="create-model" action="/model/add" method="POST">
           <label for="title"><strong>Title:</strong></label><br>
           <input type="text" id="title" name="title"><br><br>
-          <strong>Section Type:</strong><br>
-          <input type="radio" id="reading" name="section-type" value="Reading" style="width:auto;" checked>
-          <label for="reading">Reading  </label>
-          <input type="radio" id="grammar" name="section-type" value="Grammar"style="width:auto;">
-          <label for="french">Grammar  </label>
-          <input type="radio" id="science" name="section-type" value="Science"style="width:auto;">
-          <label for="science">Science  </label><br><br>
+          <input type="hidden" name="section-type" value="{{section_type}}">
+          <strong>Section Type:</strong>{{section_type}}<br><br>
   
           <label for="" value="Model Text:">
         </form>
         <textarea style="width:50vw; margin-bottom: 5%;" id="model-text" name="model-text" form="create-model" placeholder="Enter model here"></textarea><br>  
-        {% set length = 10 %}
-        {% for i in range(length) %}
+        {% set length = question_length %}
+        {% for i in range(question_length) %}
           {% with question_index = i %}
           <p class="row" style="margin-bottom: 0; padding-bottom: 0;"><strong>Question {{i+1}}.</strong></p>
           <div class="row" style="padding-top: 1.5%; padding-bottom: 1.5%;">{% include "partials/question-group-partial.html" %}</div>

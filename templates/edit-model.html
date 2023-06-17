@@ -23,7 +23,7 @@
   
           <label for="" value="Model Text:">
         </form>
-        <textarea style="width:50vw; margin-bottom: 5%;" id="model-text" name="model-text" form="create-model" placeholder="Enter model here"></textarea><br>  
+        <textarea style="width:50vw; margin-bottom: 5%;" id="model-text" name="model-text" form="create-model" placeholder="Enter model here">{{model.text}}</textarea><br>  
         {% for i in range(model.sample_question_groups|length) %}
           {% with question_index = i, model = model %}
           <p class="row" style="margin-bottom: 0; padding-bottom: 0;"><strong>Question {{i+1}}.</strong></p>
@@ -37,7 +37,7 @@
       </div>
       <div class="row" style="margin-top: 5%;">
         <label for="answers">Answer List:</label><br>
-        <input type="text" id="answers" name="answers" form="create-model" style="width:100%;" placeholder="Enter answers here (each answer letter seperated by space)"></textarea><br>
+        <input type="text" id="answers" name="answers" form="create-model" style="width:100%;" value="{% for i in range(model.sample_question_groups|length) %}{{model.sample_question_groups[i].answer}} {% endfor %}"placeholder="Enter answers here (each answer letter seperated by space)"><br>
       </div>
 
       <div class="row" style="margin-bottom: 5%;">

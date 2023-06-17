@@ -41,11 +41,12 @@ def load_sections(file_path):
     json_data = json.load(_file)
     
     for section in json_data:
-      section_type = SectionType(section["section_type"])
+      print(section)
+      section_type = SectionType(section)
       print(section_type)
       print(section_type.value)
       section_to_add = Section(section_type)
-      for workbook in section['workbooks']:
+      for workbook in json_data[section]['workbooks']:
         section_to_add.add_workbook(parse_workbook(workbook))
       sections[section_type.value] = section_to_add
 

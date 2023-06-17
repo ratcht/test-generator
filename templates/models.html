@@ -9,7 +9,10 @@
   <body>
     <div id="body-box">
 
-      
+      <h1 style="font-family: 'Arial'; padding-left: 2%; padding-top: 2%;">{{section_type}} Models</h1>
+      <div class="col-sm">
+        <a href="/section?section_type={{section_type}}">Go Back</a>
+      </div><br><br>
       <div id="main-section">
         <div id="#project-list" class="list" style="border-style: solid; border-color: greenyellow;">
           {% if models|length == 0%}
@@ -30,7 +33,7 @@
             </div>
             {% for model in models %}
               {% with model=model, model_index=loop.index %}
-              <div class="website-item"><a href="/model/edit?model_index={{model_index-1}}" style="text-decoration: none; color:black">{% include "partials/model-item.html" %}</a></div>
+              <div class="website-item"><a href="/model/edit?model_index={{indices[model_index-1]}}" style="text-decoration: none; color:black">{% include "partials/model-item.html" %}</a></div>
               {% endwith %}
               {% if loop.index != models|length %}
               <hr class="solid">
@@ -41,7 +44,10 @@
       </div>
       <div class="outer-button-wrapper">
         <div class="button-wrapper">
-          <button onclick= "window.location.href='/model/create';" class="addButton" style="background-color: yellowgreen;">Create New Model!</button>
+          <form action="/model/create"class="button-wrapper" style="margin-top: 3%; text-align: center;" method="POST">
+            <input type="hidden" name="section-type" value="{{section_type}}">
+            <input type="submit" class="addButton"value="Add new model" />
+          </form>
         </div>
       </div>
     </div>
